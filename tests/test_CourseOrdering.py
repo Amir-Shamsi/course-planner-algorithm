@@ -10,5 +10,8 @@ def test_CourseOrdering():
 
     print('ordering:', course_ordering.ordering())
 
+    queries = [[2, 6], [2, 0], [0, 2]]
+    print('for queries `{}`: {}'.format(queries, course_ordering.query(queries)))
+
 if __name__ == '__main__':
     test_CourseOrdering()
