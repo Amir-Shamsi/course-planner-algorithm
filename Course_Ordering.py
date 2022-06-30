@@ -3,6 +3,7 @@ from Data_Structures.Directed_Graph import DirectedGraph
 class CourseOrdering(DirectedGraph):
     _course_graph = None
     _is_possible_to_finished = None
+    _courses_ordering = None
 
     def __init__(self, numCourses, prerequisites):
         super().__init__(numCourses)
@@ -32,9 +33,16 @@ class CourseOrdering(DirectedGraph):
     def ordering(self):  # topological_sort
         if not self.can_courses_be_finished():
             return list()
+        if self._courses_ordering is not None:
+            return self._courses_ordering
         visited = [False] * self._vertices_count
         ordered = []
         for element in range(self._vertices_count):
             if not visited[element]:
                 self.sort(ordered, element, visited)
+
+        self._courses_ordering = ordered
         return ordered
+
+    def query(self, queries):
+        return [(self._courses_ordering.index(query[1]) < self._courses_ordering.index(query[0])) for query in queries]
