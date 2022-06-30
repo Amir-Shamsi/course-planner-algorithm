@@ -1,4 +1,4 @@
-from Data_Structures.Directed_Graph import DirectedGraph
+from data_structures.Directed_Graph import DirectedGraph
 
 class CourseOrdering(DirectedGraph):
     _course_graph = None
