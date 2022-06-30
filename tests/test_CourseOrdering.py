@@ -18,6 +18,7 @@ def test_CourseOrdering_1():  # phase 4
     # prerequisites = [[1, 0], [3, 2], [5, 2], [2, 1]]
     # prerequisites = [[1, 0], [3, 2], [5, 2], [2, 0]]
     prerequisites = [[1, 0], [3, 2], [5, 2]]
+    # prerequisites = [[1, 0], [2, 0], [3, 2], [1, 3], [5, 2]]
 
     course_ordering = CourseOrdering(numCourses, prerequisites)
 
