@@ -1,2 +1,2 @@
-# Algorithm Design and Analysis
+# Course Planner Algorithm
 algorithm design and analysis of the algorithm course of computer science engineering.
