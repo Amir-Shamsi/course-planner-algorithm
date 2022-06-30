@@ -17,3 +17,6 @@ class CourseOrdering:
         for pre_req in self.prerequisites:
             self._course_graph.add_edge(pre_req[0], pre_req[1])
 
+    def can_courses_be_finished(self):
+        return not self._course_graph.is_cyclic()
+
