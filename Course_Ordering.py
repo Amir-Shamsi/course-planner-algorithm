@@ -1,5 +1,4 @@
 import itertools
-import math
 
 from data_structures.Directed_Graph import DirectedGraph
 
@@ -27,7 +26,7 @@ class CourseOrdering(DirectedGraph):
         for course in _remain_courses:
             self.add_edge(-1, course)
 
-    def can_courses_be_finished(self):
+    def can_be_taken(self):
         if self._is_possible_to_finished is None:
             self._is_possible_to_finished = not self.is_cyclic()
         return self._is_possible_to_finished
@@ -40,7 +39,7 @@ class CourseOrdering(DirectedGraph):
         ordered.insert(0, n)
 
     def ordering(self):  # topological_sort
-        if not self.can_courses_be_finished():
+        if not self.can_be_taken():
             return list()
         if self._courses_ordering is not None:
             return self._courses_ordering

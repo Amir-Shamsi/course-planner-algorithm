@@ -6,7 +6,7 @@ def test_CourseOrdering():  # phase 1 to 3
 
     course_ordering = CourseOrdering(numCourses, prerequisites)
 
-    print('can courses be finished?:', course_ordering.can_courses_be_finished())
+    print('can courses be finished?:', course_ordering.can_be_taken())
 
     print('ordering:', course_ordering.ordering())
 
@@ -22,7 +22,7 @@ def test_CourseOrdering_1():  # phase 4
 
     course_ordering = CourseOrdering(numCourses, prerequisites)
 
-    print('can courses be finished?:', course_ordering.can_courses_be_finished())
+    print('can courses be finished?:', course_ordering.can_be_taken())
 
     print('ordering:', course_ordering.ordering())
     semesters, total_cost = course_ordering.study_plan(2, 100, 4)
