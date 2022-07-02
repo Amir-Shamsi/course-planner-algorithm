@@ -59,9 +59,10 @@ class CourseOrdering(DirectedGraph):
         graph.pop(-1)
         courses_pick_count, total_cost, semester_count = 0, 0, 0
         semesters, next_sem, visited_courses = [[]], [], []
+        _s_graph_items = sorted(graph, key=lambda course: len(graph[course]), reverse=True)
 
         while len(graph) != 0:
-            for course in sorted(graph, key=lambda course: len(graph[course]), reverse=True):
+            for course in _s_graph_items:
                 if course in next_sem or course in list(itertools.chain.from_iterable(graph.values())):
                     continue
                 if courses_pick_count < max_courses:
@@ -80,6 +81,7 @@ class CourseOrdering(DirectedGraph):
             free_courses_flag = (semester_count < free_sems)
             for v in visited_courses:
                 graph.pop(v)
+                _s_graph_items.remove(v)
             visited_courses.clear()
         semesters.pop()
         return semesters, total_cost
