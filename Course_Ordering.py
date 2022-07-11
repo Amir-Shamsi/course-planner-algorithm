@@ -24,7 +24,7 @@ class CourseOrdering(DirectedGraph):
             if pre_req[1] in _remain_courses: _remain_courses.remove(pre_req[1])
 
         for course in _remain_courses:
-            self.add_edge(-1, course)
+            self._graph[course] = []
 
     def can_be_taken(self):
         if self._is_possible_to_finished is None:
@@ -38,7 +38,7 @@ class CourseOrdering(DirectedGraph):
                 self.sort(ordered, element, visited)
         ordered.insert(0, n)
 
-    def ordering(self):  # topological_sort
+    def ordering(self):
         if not self.can_be_taken():
             return list()
         if self._courses_ordering is not None:
@@ -55,10 +55,10 @@ class CourseOrdering(DirectedGraph):
     def study_plan(self, free_sems, addition_cost, max_courses):
         free_courses_flag = True
         graph = self._graph.copy()
-        graph.pop(-1)
-        courses_pick_count, total_cost, semester_count = 0, 0, 0
         semesters, next_sem, visited_courses = [[]], [], []
-        _s_graph_items = sorted(graph, key=lambda course: len(graph[course]), reverse=True)
+        courses_pick_count, total_cost, semester_count = 0, 0, 0
+
+        _s_graph_items = sorted(self.dfs_max_lens(), key=lambda course: (self.dfs_max_lens()[course][0], self.dfs_max_lens()[course][1]), reverse=True)
 
         while len(graph) != 0:
             for course in _s_graph_items:
@@ -70,7 +70,7 @@ class CourseOrdering(DirectedGraph):
                     visited_courses.append(course)
                     courses_pick_count+=1
                     if not free_courses_flag:
-                        total_cost += addition_cost
+                        total_cost += addition_cost*(semester_count+1 - free_sems)
                 else:
                     break
             semester_count+=1
