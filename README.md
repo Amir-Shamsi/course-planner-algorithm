@@ -66,13 +66,14 @@ Return a boolean array answer, where `answer[j]` is the answer to the `Jth` quer
     Cost of this plan: (S-M)*X $
 
     ```
-    Input: 8,2,100,4, [[1,0],[3,2],[5,2]]
+    Input: 8,2,100,4, [[1, 0], [2, 0], [3, 2], [1, 3], [5, 2]]
     
     Output:
-    Semester #1: [2, 0, 4, 6]
-    Semester #2: [1, 3, 5, 7]
-    
-    Cost of this plan: 0$
+    semesters #1: [0, 4, 6, 7]
+    semesters #2: [2]
+    semesters #3: [3, 5]
+    semesters #4: [1]
+    Cost of this plan: 400$
     ```
     
 ### Installation
